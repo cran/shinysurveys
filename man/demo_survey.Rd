@@ -2,7 +2,7 @@
 % Please edit documentation in R/demo_survey.R
 \name{demo_survey}
 \alias{demo_survey}
-\title{Demo Survey over multiple pages}
+\title{Demo Survey}
 \usage{
 demo_survey(theme = "#63B8FF")
 }

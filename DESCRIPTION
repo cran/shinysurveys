@@ -1,6 +1,6 @@
 Package: shinysurveys
 Title: Create and Deploy Surveys in 'Shiny'
-Version: 0.1.2
+Version: 0.2.0
 Authors@R: 
     c(
     person(given = "Jonathan",
@@ -18,19 +18,21 @@ Authors@R:
            email = "ptlegrand1@gmail.com")
     )
 Description: Easily create and deploy surveys in 'Shiny'. This package includes
-    a minimalistic framework similar to 'Google Forms' that allows for url-based 
+    a minimalistic framework similar to 'Google Forms' that allows for url-based
     user tracking, customizable submit actions, easy survey-theming, and more.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1.9000
-Imports: shiny, shinyjs, sass
+Imports: shiny, sass, htmltools, jsonlite
 Depends: R (>= 2.10)
+Suggests: knitr, rmarkdown, tibble
+VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2021-02-18 03:51:29 UTC; jt
+Packaged: 2021-07-10 22:42:59 UTC; jt
 Author: Jonathan Trattner [aut, cre] (<https://orcid.org/0000-0002-1097-7603>),
   Lucy D'Agostino McGowan [aut],
   Paul Le Grand [ctb]
 Maintainer: Jonathan Trattner <jdt@jdtrat.com>
 Repository: CRAN
-Date/Publication: 2021-02-19 10:00:02 UTC
+Date/Publication: 2021-07-11 04:10:02 UTC

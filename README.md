@@ -4,13 +4,13 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/jdtrat/shinysurveys/workflows/R-CMD-check/badge.svg)](https://github.com/jdtrat/shinysurveys/actions) [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+[![R-CMD-check](https://github.com/jdtrat/shinysurveys/workflows/R-CMD-check/badge.svg)](https://github.com/jdtrat/shinysurveys/actions) [![CRAN status](https://www.r-pkg.org/badges/version/shinysurveys)](https://CRAN.R-project.org/package=shinysurveys)
 
 <!-- badges: end -->
 
 ------------------------------------------------------------------------
 
-<img src="https://jdtrat.com/packages/shinysurveys/hex/shinysurveys_hex-final.png" width="328" height="378" align="right"/>
+<img src="https://jdtrat.com/project/shinysurveys/featured-hex.png" width="328" height="378" align="right"/>
 
 {shinysurveys} provides easy-to-use, minimalistic code for creating and deploying surveys in Shiny. Originally inspired by Dean Attali's [shinyforms](https://github.com/daattali/shinyforms), our package provides a framework for robust surveys, similar to Google Forms, in R with [Shiny](https://github.com/rstudio/shiny/).
 
@@ -28,13 +28,14 @@
 
 ## Installation
 
-You can install the development version of shinysurveys on from Github as follows:
+You can install {shinysurveys} via CRAN or GitHub and load it as follows:
 
 ``` {.r}
-# Install/update shinysurveys with the development version from GitHub. 
-# Will install devtools if not already installed 
-if (!require("devtools")) install.packages("devtools")
-devtools::install_github("jdtrat/shinysurveys")
+# Install released version from CRAN
+install.packages("shinysurveys")
+
+# Or, install the development version from GitHub
+remotes::install_github("jdtrat/shinysurveys")
 
 # Load package
 library(shinysurveys)
@@ -44,7 +45,7 @@ library(shinysurveys)
 
 A survey made with our package might look like this:
 
-![](https://www.jdtrat.com/packages/shinysurveys/resources/shinysurveys-final-demo.gif)
+![](https://www.jdtrat.com/project/shinysurveys/shinysurveys-final-demo.gif)
 
 You can run a demo survey with the function `shinysurveys::demo_survey()`.
 
@@ -69,7 +70,7 @@ library(shinysurveys)
 df <- data.frame(question = "What is your favorite food?",
                  option = "Your Answer",
                  input_type = "text",
-                 input_id = "preferred_name",
+                 input_id = "favorite_food",
                  dependence = NA,
                  dependence_value = NA,
                  required = F)
@@ -81,7 +82,7 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-  renderSurvey(df = df)
+  renderSurvey()
   
   observeEvent(input$submit, {
     showModal(modalDialog(
@@ -102,9 +103,13 @@ shinyApp(ui, server)
 
 -   **URL-based user tracking** functionality lets you keep track of participants easily and systematically. If you deploy your survey on [shinyapps.io](https://www.shinyapps.io/), or run it locally in a browser, you can add a URL parameter after the backslash as follows: `?user_id=UNIQUE_ID`. A live demo can be found here: <a>https://jdtrat-apps.shinyapps.io/shinysurveys_user_tracking/?user_id=hadley</a>
 
+- **Multi-paged surveys** can be used to better organize questions and make it easier for people to complete. As of v0.2.0., users can add an additional column page to the data frame of questions. The column can either have numeric (e.g. `c(1, 1, 2, 3`) or character (`c("intro", "intro", "middle", "final")`) values. For more documentation, see my [blog post](https://www.jdtrat.com/blog/multi-paged-shinysurvey/).
+
+- **Automatic response aggregation** to easily gather participant's data upon submission with `getSurveyData()`. See the [official vignette](https://shinysurveys.jdtrat.com/articles/get-survey-data.html) for more details.
+
 ## Further Reading
 
-For a more in-depth explanation of {shinysurveys}, please see the vignette [*A survey of {shinysurveys}*](https://www.jdtrat.com/packages/shinysurveys/articles/surveying-shinysurveys.html).
+For a more in-depth explanation of {shinysurveys}, please see the vignette [*A survey of {shinysurveys}*](https://shinysurveys.jdtrat.com/articles/surveying-shinysurveys.html).
 
 ## Feedback
 
